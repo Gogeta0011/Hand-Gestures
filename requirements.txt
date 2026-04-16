@@ -1,4 +1,36 @@
-mediapipe==0.10.21
-opencv-python
-pyautogui
-numpy
+required_modules = [
+    "cv2",
+    "numpy",
+    "mediapipe",
+    "pyautogui",
+    "platform",
+    "math",
+    "time",
+    "logging",
+    "collections",
+    "enum",
+    "dataclasses",
+    "typing",
+    "subprocess",
+    "sys",
+    "os"
+]
+
+missing = []
+
+for module in required_modules:
+    try:
+        __import__(module)
+        print(f"✅ {module}")
+    except ImportError:
+        print(f"❌ {module} (MISSING)")
+        missing.append(module)
+
+print("\n==============================")
+if missing:
+    print("❌ Missing modules:")
+    for m in missing:
+        print("  -", m)
+else:
+    print("🎉 All required modules are installed!")
+print("==============================")
